@@ -4,8 +4,10 @@ use App\Http\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminServiceCategoryComponent;
 use App\Http\Livewire\Customer\CustomerDashboardComponent;
 use App\Http\Livewire\Provider\ProviderDashboardComponent;
+use App\Http\Livewire\ServiceCategoriesComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::get('logout', function () {
 })->name('logout');
 
 Route::get('/', HomeComponent::class)->name('home');
+Route::get('/service-categories', ServiceCategoriesComponent::class)->name('home.service_categories');
 
 //Customer
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -41,4 +44,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authprovider'])->group(function 
 //Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/service-categories', AdminServiceCategoryComponent::class)->name('admin.service_categories');
 });
