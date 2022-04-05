@@ -16,6 +16,7 @@
     <a href="#">My account (Admin)</a>
     <a href="{{ route('admin.dashboard') }}">Dashboard</a>
     <a href="{{ route('admin.service_categories') }}">Service categories</a>
+    <a href="{{ route('admin.all_services') }}">Service</a>
     <a href="{{ route('logout') }}">Logout</a>
     @elseif (Auth::user()->utype==='provider')
     <a href="#">My account (Service Provider)</a>

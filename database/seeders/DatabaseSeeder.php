@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 use Database\Seeders\ServiceCategoriesSeeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
 
-        $this->call([
-            ServiceCategoriesSeeder::class
-        ]);
+        //$this->call([ServiceCategoriesSeeder::class]);
+
+
+        Service::factory(5)->create();
     }
 }

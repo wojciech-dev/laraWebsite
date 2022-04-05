@@ -20,6 +20,7 @@
             <td>{{ $category->name }}</td>
             <td>{{ $category->slug }}</td>
             <td>
+                <a href="{{ route('admin.services_by_category', ['category_slug' => $category->slug]) }}">List</a>
                 <a href="{{ route('admin.edit_service_category', ['category_id' => $category->id]) }}">Edit</a>
                 <a href="#" onclick="confirm('Are you sure want to delete?') || event.stopImmediatePropagation()" wire:click.prevent="deleteServiceCategory({{ $category->id }})">Delete</a>
             </td>
