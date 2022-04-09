@@ -26,14 +26,14 @@
             </td>
             <td>{{ $service->category->name }}</td>
             <td>
-                <a href="#">Edit</a>
-                <a href="#" onclick="confirm('Are you sure want to delete?') || event.stopImmediatePropagation()" wire:click.prevent="deleteServiceservice({{ $service->id }})">Delete</a>
+                <a href="{{ route('admin.edit_service', ['service_slug' => $service->slug]) }}">Edit</a>
+                <a href="#" onclick="confirm('Are you sure want to delete?') || event.stopImmediatePropagation()" wire:click.prevent="deleteService({{ $service->id }})">Delete</a>
             </td>
         </tr>
         @endforeach
         <tr>
             <td>
-                <a href="#">Add new service</a>
+                <a href="{{ route('admin.add_service') }}">Add new service</a>
             </td>
         </tr>
     </table>

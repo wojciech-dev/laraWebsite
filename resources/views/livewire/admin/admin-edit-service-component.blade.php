@@ -1,11 +1,11 @@
 <div>
-	<h1>Add new service</h1>
+	<h1>Edit new service</h1>
 
 	@if (Session::has('message'))
 	<div>{{ Session::get('message') }}</div>
 	@endif
 
-	<form wire:submit.prevent="createNewService">
+	<form wire:submit.prevent="updateService">
 		@csrf
 		<div class="form-group">
 			<label for="name">Name</label>
@@ -42,12 +42,12 @@
 		</div>
 		<div class="form-group">
 			<label for="image">Image</label>
-			<input type="file" name="image" wire:model="image" />
-			@error('image') <p>{{ $message }}</p> @enderror
-			@if ($image)
+			<input type="file" name="image" wire:model="newimage" />
+			@error('newimage') <p>{{ $message }}</p> @enderror
+			@if ($newimage)
 			@php
 			try {
-			$url = $image->temporaryUrl();
+			$url = $newimage->temporaryUrl();
 			$photoStatus = true;
 			}catch (RuntimeException $exception){
 			$photoStatus = false;
@@ -57,17 +57,20 @@
 			<img width="150px" src="{{ $url }}">
 			@else
 			Something went wrong while uploading the file.
+			<img width="150px" src="{{ asset('images/services') }}/{{ $image }}" alt="">
 			@endif
+			@else
+			<img width="150px" src="{{ asset('images/services') }}/{{ $image }}" alt="">
 			@endif
 		</div>
 		<div class="form-group">
 			<label for="thumbnail">Thumbnail</label>
-			<input type="file" name="thumbnail" wire:model="thumbnail" />
-			@error('thumbnail') <p>{{ $message }}</p> @enderror
-			@if ($thumbnail)
+			<input type="file" name="thumbnail" wire:model="newthumbnail" />
+			@error('newthumbnail') <p>{{ $message }}</p> @enderror
+			@if ($newthumbnail)
 			@php
 			try {
-			$url = $thumbnail->temporaryUrl();
+			$url = $newthumbnail->temporaryUrl();
 			$photoStatus = true;
 			}catch (RuntimeException $exception){
 			$photoStatus = false;
@@ -77,7 +80,10 @@
 			<img width="150px" src="{{ $url }}">
 			@else
 			Something went wrong while uploading the file.
+			<img width="150px" src="{{ asset('images/services/thumbnails') }}/{{ $image }}" alt="">
 			@endif
+			@else
+			<img width="150px" src="{{ asset('images/services/thumbnails') }}/{{ $image }}" alt="">
 			@endif
 		</div>
 		<div class="form-group">
@@ -86,6 +92,6 @@
 			@error('status') <p>{{ $message }}</p> @enderror
 		</div>
 
-		<button type="submit">Save</button>
+		<button type="submit">Update</button>
 	</form>
 </div>
