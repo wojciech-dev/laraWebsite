@@ -16,7 +16,7 @@ class AdminAddServiceComponent extends Component
     public $slug;
     public $service_category_id;
     public $price;
-    public $discount_type;
+    public $difficulty_level;
     public $image;
     public $thumbnail;
     public $status;
@@ -31,7 +31,7 @@ class AdminAddServiceComponent extends Component
         'slug' => 'required',
         'service_category_id' => 'required',
         'price' => 'required',
-        'discount_type' => 'required',
+        'difficulty_level' => 'required',
         'image' => 'required|mimes:png,jpg,jpeg|max:10000',
         'thumbnail' => 'required|mimes:png,jpg,jpeg|max:10000',
         'status' => 'required',
@@ -49,7 +49,7 @@ class AdminAddServiceComponent extends Component
             'slug' => 'required',
             'service_category_id' => 'required',
             'price' => 'required',
-            'discount_type' => 'required',
+            'difficulty_level' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg|max:10000',
             'thumbnail' => 'required|mimes:png,jpg,jpeg|max:10000',
             'status' => 'required',
@@ -60,7 +60,7 @@ class AdminAddServiceComponent extends Component
         $service->slug = $this->slug;
         $service->service_category_id = $this->service_category_id;
         $service->price = $this->price;
-        $service->discount_type = $this->discount_type;
+        $service->difficulty_level = $this->difficulty_level;
         $service->status = $this->status;
 
 

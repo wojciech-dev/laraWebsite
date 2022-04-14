@@ -17,7 +17,7 @@ class AdminEditServiceComponent extends Component
     public $slug;
     public $service_category_id;
     public $price;
-    public $discount_type;
+    public $difficulty_level;
     public $image;
     public $thumbnail;
     public $status;
@@ -38,7 +38,7 @@ class AdminEditServiceComponent extends Component
         $this->slug = $service->slug;
         $this->service_category_id = $service->service_category_id;
         $this->price = $service->price;
-        $this->discount_type = $service->discount_type;
+        $this->difficulty_level = $service->difficulty_level;
         $this->image = $service->image;
         $this->thumbnail  = $service->thumbnail;
         $this->status = $service->status;
@@ -49,7 +49,7 @@ class AdminEditServiceComponent extends Component
         'slug' => 'required',
         'service_category_id' => 'required',
         'price' => 'required',
-        'discount_type' => 'required',
+        'difficulty_level' => 'required',
         'status' => 'required',
     ];
 
@@ -77,7 +77,7 @@ class AdminEditServiceComponent extends Component
             'slug' => 'required',
             'service_category_id' => 'required',
             'price' => 'required',
-            'discount_type' => 'required',
+            'difficulty_level' => 'required',
             'status' => 'required',
         ]);
 
@@ -98,7 +98,7 @@ class AdminEditServiceComponent extends Component
         $service->slug = $this->slug;
         $service->service_category_id = $this->service_category_id;
         $service->price = $this->price;
-        $service->discount_type = $this->discount_type;
+        $service->difficulty_level = $this->difficulty_level;
         $service->status = $this->status;
 
         if ($this->newthumbnail) {

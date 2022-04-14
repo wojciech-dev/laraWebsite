@@ -32,13 +32,14 @@
 			@error('price') <p>{{ $message }}</p> @enderror
 		</div>
 		<div class="form-group">
-			<label for="discount_type">Discount type</label>
-			<select name="discount_type" wire:model="discount_type">
+			<label for="difficulty_level">Difficulty level</label>
+			<select name="difficulty_level" wire:model="difficulty_level">
 				<option value="">Select</option>
-				<option value="1">fixed</option>
-				<option value="2">percent</option>
+				<option value="1">easy</option>
+				<option value="2">medium</option>
+				<option value="3">hard</option>
 			</select>
-			@error('discount_type') <p>{{ $message }}</p> @enderror
+			@error('difficulty_level') <p>{{ $message }}</p> @enderror
 		</div>
 		<div class="form-group">
 			<label for="image">Image</label>

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->bigInteger('service_category_id')->unsigned()->nullable();
             $table->decimal('price');
             $table->decimal('discount')->nullable();
-            $table->enum('discount_type', ['fixed', 'precent'])->nullable();
+            $table->enum('difficulty_level', ['easy', 'medium', 'hard'])->nullable();
             $table->string('image')->nullable();
             $table->string('thumbnail')->nullable();
             $table->longText('description')->nullable();
