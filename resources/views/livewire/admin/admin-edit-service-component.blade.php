@@ -42,6 +42,13 @@
 			@error('difficulty_level') <p>{{ $message }}</p> @enderror
 		</div>
 		<div class="form-group">
+			<label for="content">Content</label>
+			<textarea name="content" wire:model="content"></textarea>
+			@error('content') <p>{{ $message }}</p> @enderror
+		</div>
+
+
+		<div class="form-group">
 			<label for="image">Image</label>
 			<input type="file" name="image" wire:model="newimage" />
 			@error('newimage') <p>{{ $message }}</p> @enderror
@@ -92,7 +99,6 @@
 			<input type="number" name="status" wire:model="status" />
 			@error('status') <p>{{ $message }}</p> @enderror
 		</div>
-
 		<button type="submit">Update</button>
 	</form>
 </div>

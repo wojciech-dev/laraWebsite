@@ -17,6 +17,7 @@
     <a href="{{ route('admin.dashboard') }}">Dashboard</a>
     <a href="{{ route('admin.service_categories') }}">Service categories</a>
     <a href="{{ route('admin.all_services') }}">Service</a>
+    <a href="{{ route('admin.slider') }}">Slider</a>
     <a href="{{ route('logout') }}">Logout</a>
     @elseif (Auth::user()->utype==='provider')
     <a href="#">My account (Service Provider)</a>
@@ -42,9 +43,10 @@
 
 
     {{$slot}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
 
-
-
+    @stack('scripts')
 
     @livewireScripts
 </body>

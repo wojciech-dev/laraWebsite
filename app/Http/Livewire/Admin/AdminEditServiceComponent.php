@@ -16,6 +16,7 @@ class AdminEditServiceComponent extends Component
     public $name;
     public $slug;
     public $service_category_id;
+    public $content;
     public $price;
     public $difficulty_level;
     public $image;
@@ -37,6 +38,7 @@ class AdminEditServiceComponent extends Component
         $this->name = $service->name;
         $this->slug = $service->slug;
         $this->service_category_id = $service->service_category_id;
+        $service->content = $this->content;
         $this->price = $service->price;
         $this->difficulty_level = $service->difficulty_level;
         $this->image = $service->image;

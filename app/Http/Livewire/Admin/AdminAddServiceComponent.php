@@ -15,6 +15,7 @@ class AdminAddServiceComponent extends Component
     public $name;
     public $slug;
     public $service_category_id;
+    public $content;
     public $price;
     public $difficulty_level;
     public $image;
@@ -59,6 +60,7 @@ class AdminAddServiceComponent extends Component
         $service->name = $this->name;
         $service->slug = $this->slug;
         $service->service_category_id = $this->service_category_id;
+        $service->content = $this->content;
         $service->price = $this->price;
         $service->difficulty_level = $this->difficulty_level;
         $service->status = $this->status;
