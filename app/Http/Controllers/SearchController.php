@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -13,7 +14,14 @@ class SearchController extends Controller
         return response()->json($data);
     }
 
-    public function searchservices(Request $request)
+    public function searchServices(Request $request)
     {
+        $service_slug = Str::slug($request->q, '-');
+
+        if ($service_slug) {
+            return redirect('/service/' . $service_slug);
+        } else {
+            return back();
+        }
     }
 }

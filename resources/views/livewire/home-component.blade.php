@@ -1,6 +1,7 @@
 <h1>home component</h1>
 
-<form id="sform" action="searchservices" method="post">
+<form id="sform" action="{{ route('searchServices') }}" method="post">
+    @csrf
     <input type="text" name="q" id="q" class="typeahead" placeholder="Search" autocomplete="off">
     <div id="list"></div>
     <input type="submit" name="submit" value="Search">
@@ -43,11 +44,18 @@
             return arr;
     }
 
+    function boldStr(needle, haystack) {
+        let regex = new RegExp(needle, 'i');
+        return haystack.replace(regex, "<b>" + needle + "</b>");
+    }
+
     $("input.typeahead").autocomplete({
         source: getNames(),
-        appendTo:'#list'
-    });
-   
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+        return $("<li>")
+          .append("<div>" + boldStr($("input.typeahead").val(), item.label) + "</div>")
+          .appendTo(ul);
+    };
 
 </script>
 

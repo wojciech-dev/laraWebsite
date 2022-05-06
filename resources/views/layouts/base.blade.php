@@ -18,10 +18,12 @@
     <a href="{{ route('admin.service_categories') }}">Service categories</a>
     <a href="{{ route('admin.all_services') }}">Service</a>
     <a href="{{ route('admin.slider') }}">Slider</a>
+    <a href="{{ route('admin.contacts') }}">Contacts</a>
     <a href="{{ route('logout') }}">Logout</a>
     @elseif (Auth::user()->utype==='provider')
     <a href="#">My account (Service Provider)</a>
     <a href="{{ route('provider.dashboard') }}">Dashboard</a>
+    <a href="{{ route('provider.profile') }}">Profile</a>
     <a href="{{ route('logout') }}">Logout</a>
     @else
     <a href="#">My account (Customer)</a>
@@ -34,6 +36,7 @@
             <li><a href="{{ route('register') }}">Register</a></li>
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('home.service_categories') }}">service categories</a></li>
+            <li>    <a href="{{ route('home.contact') }}">Contact</a></li>
         </ul>
     </nav>
     @endif

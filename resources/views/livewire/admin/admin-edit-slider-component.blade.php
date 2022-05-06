@@ -15,7 +15,7 @@
 		</select>
 		@error('status') <p>{{ $message }}</p> @enderror
 		<input type="file" name="image" wire:model="newImage">
-		@error('newimage')<p>{{ $message }}</p> @enderror
+		@error('newImage')<p>{{ $message }}</p> @enderror
 		<div class="form-group">
 			@if ($newImage)
 			@php
