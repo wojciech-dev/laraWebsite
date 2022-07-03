@@ -14,19 +14,7 @@
         <input type="file" name="image" wire:model="image">
         @error('image')<p>{{ $message }}</p> @enderror
         @if ($image)
-        @php
-        try {
-        $url = $image->temporaryUrl();
-        $photoStatus = true;
-        }catch (RuntimeException $exception){
-        $photoStatus = false;
-        }
-        @endphp
-        @if($photoStatus)
-        <img width="150px" src="{{ $url }}">
-        @else
-        Something went wrong while uploading the file.
-        @endif
+            <img width="150px" src="{{ $image->temporaryUrl() }}">
         @endif
         <button type="submit">Save</button>
     </form>

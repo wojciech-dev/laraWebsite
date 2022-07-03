@@ -1,42 +1,71 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            DentalPro
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
+        <div class="bg-white p-5 m-10 max-w-md mx-auto rounded shadow-md">
+            <h2 class="text-4xl px-4 ">Register</h2>
+        <form method="POST" action="{{ route('register') }}" class="mt-10 space-y-8">
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input 
+                    id="name" 
+                    class="w-full border rounded h-12 px-4" 
+                    type="text" name="name" 
+                    :value="old('name')"
+                    placeholder="name"
+                    required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input 
+                    id="email" 
+                    class="w-full border rounded h-12 px-4" 
+                    type="email" 
+                    name="email" 
+                    placeholder="email"
+                    :value="old('email')" required 
+                />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input 
+                    id="password" 
+                    class="w-full border rounded h-12 px-4" 
+                    type="password" 
+                    name="password"
+                    placeholder="password"
+                    required autocomplete="new-password" 
+                    />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input 
+                    id="password_confirmation" 
+                    class="w-full border rounded h-12 px-4" 
+                    type="password" 
+                    name="password_confirmation"
+                    placeholder="Confirm Password"
+                    required autocomplete="new-password" 
+                />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="phone" value="Phone" />
-                <x-jet-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required />
+                <x-jet-input 
+                    id="phone" 
+                    class="w-full border rounded h-12 px-4" 
+                    type="number" 
+                    name="phone" 
+                    placeholder="phone"
+                    :value="old('phone')" required 
+                />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="registeras" value="Register as" />
-                <select name="registeras" id="registeras" class="block mt-1 w-full">
+                <select name="registeras" id="registeras" class="w-full border rounded h-12 px-4">
                     <option value="customer">Customer</option>
                     <option value="provider">Provider</option>
                 </select>
@@ -59,15 +88,18 @@
             </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between ">
+
+                <x-jet-button class="bg-teal-500 text-sm active:bg-gray-700 cursor-pointer font-regular text-white px-4 py-2 rounded uppercase hover:bg-sky-700">
+                    {{ __('Register') }}
+                </x-jet-button>
+
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
         </form>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>

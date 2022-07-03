@@ -31,11 +31,10 @@ class AdminAddServiceCategoryComponent extends Component
         $category = new ServiceCategory();
         $category->name = $this->name;
         $category->slug = $this->slug;
-        if ($this->image) {
-            $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
-            $this->image->storeAs('categories', $imageName);
-            $category->image = $imageName;
-        }
+
+        $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
+        $this->image->storeAs('categories', $imageName);
+        $category->image = $imageName;
         $category->save();
         session()->flash('message', 'Category has been created success');
         $this->reset();
