@@ -1,3 +1,1 @@
-<div id="admin">
-    <h1>Admin dashboard</h1>
-</div>
+<h2 class="text-4xl px-4 ">Admin dashboard</h2>
