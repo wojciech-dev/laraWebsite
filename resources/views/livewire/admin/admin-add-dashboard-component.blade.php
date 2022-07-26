@@ -1,5 +1,5 @@
 <div id="main">
-    <h6 class="text-3xl px-5 pb-3">Edit slide</h6>
+    <h6 class="text-3xl px-5 pb-3">Add body</h6>
   
   @if (Session::has('message'))
     <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
@@ -15,37 +15,76 @@
   
   <div>
     <div class="mt-5 md:mt-0 md:col-span-2">
-        <form wire:submit.prevent="updateSlide">
+        <form wire:submit.prevent="addNewBodies">
         @csrf
         <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                @error('name') <p>{{ $message }}</p> @enderror
+                <label class="block text-sm font-medium text-gray-700"> Name </label>
+                <div class="mt-1">
+                  <input 
+                    type="text" 
+                    name="name"
+                    wire:model="name"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline">
+                </div>
+              </div>
               <div class="col-span-3 sm:col-span-2">
                 @error('title') <p>{{ $message }}</p> @enderror
                 <label class="block text-sm font-medium text-gray-700"> Title </label>
                 <div class="mt-1">
                   <input 
                     type="text" 
-					name="title" 
-					wire:model="title"
+                    name="title"
+                    wire:model="title"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline">
                 </div>
               </div>
+            <div>
+            <div class="flex items-center mb-4">
+                <input 
+                    type="checkbox"
+                    name="more"
+                    wire:model="more"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label class="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500">More</label>
+            </div>
             </div>
             <div>
-				@error('status') <p>{{ $message }}</p> @enderror
-				<select 
-					name="status" 
-					wire:model="status"
-				>
-					<option value="1">Avtive</option>
-					<option value="0">Disactive</option>
-				</select>
-
+	
+                <label class="form-label inline-block mb-2 text-gray-700"
+                  >Body</label
+                >
+                <textarea
+                    name="content"
+                    wire:model="content"
+                  class="
+                    shadow
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                  "
+                  rows="3"
+                  placeholder="Your message"
+                ></textarea>
+              
             </div>
             <div>
               @error('image')<p>{{ $message }}</p> @enderror
-              <label class="block text-sm font-medium text-gray-700"> Cover photo </label>
+              <label class="block text-sm font-medium text-gray-700"> Photo </label>
               <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                 <div class="space-y-1 text-center">
                   <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
@@ -57,28 +96,13 @@
                       <input 
                         type="file" 
                         name="image" 
-                        wire:model="newImage"
+                        wire:model="image"
                         class="sr-only">
                     </label>
                   </div>
                   <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                  @if ($newImage)
-                  @php
-                  try {
-                  $url = $newImage->temporaryUrl();
-                  $photoStatus = true;
-                  }catch (RuntimeException $exception){
-                  $photoStatus = false;
-                  }
-                  @endphp
-                  @if($photoStatus)
-                  <img src="{{ $url }}">
-                  @else
-                  Something went wrong while uploading the file.
-                  <img width="150px" src="{{ asset('images/slider') }}/{{ $image }}" alt="">
-                  @endif
-                  @else
-                  <img width="150px" src="{{ asset('images/slider') }}/{{ $image }}" alt="">
+                  @if ($image)
+                      <img width="150px" src="{{ $image->temporaryUrl() }}">
                   @endif
                 </div>
               </div>

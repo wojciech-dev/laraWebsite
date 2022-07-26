@@ -12,10 +12,37 @@
       </div>
       <div class="flex flex-col items-center mt-12 text-center">
         <span class="relative inline-flex w-full md:w-auto">
-          <a href="#_" type="button"
-            class="inline-flex items-center justify-center px-6 py-2 text-base font-bold leading-6 text-white bg-green-600 rounded-full lg:w-full md:w-auto hover:bg-green-500 focus:outline-none">
-            Buy Now
-          </a>
+          <form id="sform" action="searchservices" method="post">
+            <input type="text" name="q" id="q" class="typeahead" placeholder="Search" autocomplete="off">
+            <div id="list"></div>
+            <input type="submit" name="submit" value="Search">
+        </form>
       </div>
     </div>
     <!-- End Main Hero Content -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+      const path = "{{ route('autocomplete') }}";
+    
+      const getNames = function() {
+          let arr = [];
+          $.ajax({
+              url: path,
+              dataType: 'json',
+              success: function(data) {
+                  for(let i in data){
+                      arr.push(data[i].name);
+                  }
+                  return arr.flat();
+              }
+              });
+              return arr;
+      }
+      $("input.typeahead").autocomplete({
+          source: getNames(),
+          appendTo:'#list'
+      });
+     
+  </script>

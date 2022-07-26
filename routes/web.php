@@ -2,11 +2,13 @@
 
 use App\Http\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\ContactComponent;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\SearchController;
 use App\Http\Livewire\ServiceDetailsComponent;
 use App\Http\Livewire\Admin\AdminSliderComponent;
 use App\Http\Livewire\ServiceCategoriesComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\ServicesByCategoryComponent;
 use App\Http\Livewire\Admin\AdminServicesComponent;
 use App\Http\Livewire\Admin\AdminAddSliderComponent;
@@ -14,17 +16,17 @@ use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminAddServiceComponent;
 use App\Http\Livewire\Admin\AdminEditSliderComponent;
 use App\Http\Livewire\Admin\AdminEditServiceComponent;
+use App\Http\Livewire\Admin\AdminAddDashboardComponent;
+use App\Http\Livewire\Admin\AdminEditDashboardComponent;
 use App\Http\Livewire\Provider\ProviderProfileComponent;
 use App\Http\Livewire\Admin\AdminServiceCategoryComponent;
 use App\Http\Livewire\Customer\CustomerDashboardComponent;
 use App\Http\Livewire\Provider\ProviderDashboardComponent;
+use App\Http\Livewire\Admin\AdminServiceProvidersComponent;
+use App\Http\Livewire\Provider\EditProviderProfileComponent;
 use App\Http\Livewire\Admin\AdminAddServiceCategoryComponent;
-use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditServiceCategoryComponent;
-use App\Http\Livewire\Admin\AdminServiceProvidersComponent;
-use App\Http\Livewire\ContactComponent;
-use App\Http\Livewire\Provider\EditProviderProfileComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +71,8 @@ Route::middleware(['auth:sanctum', 'verified', 'authprovider'])->group(function 
 //Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/dashboard/add', AdminAddDashboardComponent::class)->name('admin.add_dashboard');
+    Route::get('/admin/dashboard/edit/{body_id}', AdminEditDashboardComponent::class)->name('admin.edit_dashboard');
 
     Route::get('/admin/service-categories', AdminServiceCategoryComponent::class)->name('admin.service_categories');
     Route::get('/admin/service-category/add', AdminAddServiceCategoryComponent::class)->name('admin.add_service_category');
