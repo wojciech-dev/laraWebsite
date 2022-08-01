@@ -27,7 +27,9 @@
           <th class="px-16 py-2">
             <span class="text-gray-300">Title</span>
           </th>
-
+          <th class="px-16 py-2">
+            <span class="text-gray-300">Content</span>
+          </th>
           <th class="px-16 py-2">
             <span class="text-gray-300">Status</span>
           </th>
@@ -43,6 +45,7 @@
           <td class="px-16 py-2">{{ $slide->id }}</td>
           <td class="px-16 py-2"><img width="100px" class="inline-block" src="{{ asset('images/slider') }}/{{ $slide->image }}" alt=""></td>
           <td class="px-16 py-2">{{ $slide->title }}</td>
+          <td class="px-16 py-2">{{ $slide->content }}</td>
           <td class="px-16 py-2">{{ $slide->status }}</td>
 
           <td class="px-16 py-2">

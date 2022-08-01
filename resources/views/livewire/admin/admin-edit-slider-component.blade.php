@@ -19,7 +19,6 @@
         @csrf
         <div class="shadow sm:rounded-md sm:overflow-hidden">
           <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-            <div class="grid grid-cols-3 gap-6">
               <div class="col-span-3 sm:col-span-2">
                 @error('title') <p>{{ $message }}</p> @enderror
                 <label class="block text-sm font-medium text-gray-700"> Title </label>
@@ -31,8 +30,41 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline">
                 </div>
               </div>
-            </div>
             <div>
+
+              <div>
+	
+                <label class="form-label inline-block mb-2 text-gray-700"
+                >Content</label
+                >
+                <textarea
+                  name="content"
+                  wire:model="content"
+                class="
+                  shadow
+                  form-control
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                "
+                rows="3"
+                placeholder="Your message"
+                ></textarea>
+              
+              </div>
+
+
 				@error('status') <p>{{ $message }}</p> @enderror
 				<select 
 					name="status" 

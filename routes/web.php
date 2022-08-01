@@ -27,6 +27,7 @@ use App\Http\Livewire\Provider\EditProviderProfileComponent;
 use App\Http\Livewire\Admin\AdminAddServiceCategoryComponent;
 use App\Http\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditServiceCategoryComponent;
+use App\Http\Livewire\MenuComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::get('/service/{service_slug}', ServiceDetailsComponent::class)->name('hom
 Route::get('/autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');
 Route::post('/search', [SearchController::class, 'searchServices'])->name('searchServices');
 Route::get('/contact-us', ContactComponent::class)->name('home.contact');
+Route::get('/our-menu', MenuComponent::class)->name('home.menu');
 
 //Customer
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -67,7 +69,6 @@ Route::middleware(['auth:sanctum', 'verified', 'authprovider'])->group(function 
     Route::get('/provider/profile/edit', EditProviderProfileComponent::class)->name('provider.edit_profile');
 });
 
-
 //Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
@@ -80,8 +81,8 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
 
     Route::get('/admin/all-services', AdminServicesComponent::class)->name('admin.all_services');
     Route::get('/admin/{category_slug}/services', AdminServicesByCategoryComponent::class)->name('admin.services_by_category');
-    Route::get('/admin//service/add', AdminAddServiceComponent::class)->name('admin.add_service');
-    Route::get('/admin//service/edit/{service_slug}', AdminEditServiceComponent::class)->name('admin.edit_service');
+    Route::get('/admin/service/add', AdminAddServiceComponent::class)->name('admin.add_service');
+    Route::get('/admin/service/edit/{service_slug}', AdminEditServiceComponent::class)->name('admin.edit_service');
 
     Route::get('/admin/slider', AdminSliderComponent::class)->name('admin.slider');
     Route::get('/admin/slide/add', AdminAddSliderComponent::class)->name('admin.add_slide');

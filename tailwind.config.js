@@ -22,7 +22,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        '2xl': '1600px',
+        '2xl': '1280px',
       },
       spacing: {
         '72': '18rem',

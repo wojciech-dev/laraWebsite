@@ -17,10 +17,14 @@ class AdminEditServiceComponent extends Component
     public $slug;
     public $service_category_id;
     public $content;
+    public $street;
     public $price;
+    public $calories;
+    public $estimated_elivery;
     public $difficulty_level;
     public $image;
     public $thumbnail;
+    public $description;
     public $status;
 
     public $newthumbnail;
@@ -39,20 +43,19 @@ class AdminEditServiceComponent extends Component
         $this->slug = $service->slug;
         $this->service_category_id = $service->service_category_id;
         $this->content = $service->content;
+        $this->street = $service->street;
         $this->price = $service->price;
+        $this->calories = $service->calories;
+        $this->estimated_elivery = $service->estimated_elivery;
         $this->difficulty_level = $service->difficulty_level;
         $this->image = $service->image;
         $this->thumbnail  = $service->thumbnail;
+        $this->description = $service->description;
         $this->status = $service->status;
     }
 
     protected $rules = [
         'name' => 'required',
-        'slug' => 'required',
-        'service_category_id' => 'required',
-        'price' => 'required',
-        'difficulty_level' => 'required',
-        'status' => 'required',
     ];
 
     public function updated($propertyName)
@@ -76,11 +79,6 @@ class AdminEditServiceComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required',
-            'service_category_id' => 'required',
-            'price' => 'required',
-            'difficulty_level' => 'required',
-            'status' => 'required',
         ]);
 
         if ($this->newthumbnail) {
@@ -100,21 +98,29 @@ class AdminEditServiceComponent extends Component
         $service->slug = $this->slug;
         $service->service_category_id = $this->service_category_id;
         $service->content = $this->content;
+        $service->street = $this->street;
         $service->price = $this->price;
+        $service->calories = $this->calories;
+        $service->estimated_elivery = $this->estimated_elivery;
         $service->difficulty_level = $this->difficulty_level;
+        $service->description = $this->description;
         $service->status = $this->status;
 
         if ($this->newthumbnail) {
-            unlink('images/services/thumbnails' . '/' . $service->thumbnail);
+            if ($service->thumbnail) {
+                unlink('images/services/thumbnails' . '/' . $service->thumbnail);
+            }
             $imageName = Carbon::now()->timestamp . '.' . $this->newthumbnail->extension();
-            $this->newthumbnail->storeAs('services', $imageName);
+            $this->newthumbnail->storeAs('services/thumbnails', $imageName);
             $service->thumbnail = $imageName;
         }
 
         if ($this->newimage) {
-            unlink('images/services' . '/' . $service->image);
+            if ($service->image) {
+                unlink('images/services' . '/' . $service->image);
+            }
             $imageName2 = Carbon::now()->timestamp . '.' . $this->newimage->extension();
-            $this->newimage->storeAs('services/thumbnails', $imageName2);
+            $this->newimage->storeAs('services', $imageName2);
             $service->image = $imageName2;
         }
 

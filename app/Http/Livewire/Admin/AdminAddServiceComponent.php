@@ -16,10 +16,14 @@ class AdminAddServiceComponent extends Component
     public $slug;
     public $service_category_id;
     public $content;
+    public $street;
     public $price;
+    public $calories;
+    public $estimated_elivery;
     public $difficulty_level;
     public $image;
     public $thumbnail;
+    public $description;
     public $status;
 
     public function generateSlug()
@@ -29,13 +33,8 @@ class AdminAddServiceComponent extends Component
 
     protected $rules = [
         'name' => 'required',
-        'slug' => 'required',
-        'service_category_id' => 'required',
-        'price' => 'required',
-        'difficulty_level' => 'required',
-        'image' => 'required|mimes:png,jpg,jpeg|max:10000',
-        'thumbnail' => 'required|mimes:png,jpg,jpeg|max:10000',
-        'status' => 'required',
+        'image' => 'mimes:png,jpg,jpeg|max:10000',
+        'thumbnail' => 'mimes:png,jpg,jpeg|max:10000',
     ];
 
     public function updated($propertyName)
@@ -47,13 +46,8 @@ class AdminAddServiceComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required',
-            'service_category_id' => 'required',
-            'price' => 'required',
-            'difficulty_level' => 'required',
-            'image' => 'required|mimes:png,jpg,jpeg|max:10000',
-            'thumbnail' => 'required|mimes:png,jpg,jpeg|max:10000',
-            'status' => 'required',
+            'image' => 'nullable|mimes:png,jpg,jpeg|max:10000',
+            'thumbnail' => 'nullable|mimes:png,jpg,jpeg|max:10000',
         ]);
 
         $service = new Service();
@@ -61,15 +55,17 @@ class AdminAddServiceComponent extends Component
         $service->slug = $this->slug;
         $service->service_category_id = $this->service_category_id;
         $service->content = $this->content;
+        $service->street = $this->street;
         $service->price = $this->price;
+        $service->calories = $this->calories;
+        $service->estimated_elivery = $this->estimated_elivery;
         $service->difficulty_level = $this->difficulty_level;
+        $service->description = $this->description;
         $service->status = $this->status;
-
 
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
         $this->image->storeAs('services', $imageName);
         $service->image = $imageName;
-
 
         $imageName2 = Carbon::now()->timestamp . '.' . $this->thumbnail->extension();
         $this->thumbnail->storeAs('services/thumbnails', $imageName2);

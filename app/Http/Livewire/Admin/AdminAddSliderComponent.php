@@ -12,6 +12,7 @@ class AdminAddSliderComponent extends Component
     use WithFileUploads;
     public $title;
     public $image;
+    public $content;
     public $status = 0;
 
 
@@ -28,6 +29,7 @@ class AdminAddSliderComponent extends Component
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
         $this->image->storeAs('slider', $imageName);
         $slide->image = $imageName;
+        $slide->content = $this->content;
         $slide->status = $this->status;
         $slide->save();
         session()->flash('message', 'Slide has beed created successfully');

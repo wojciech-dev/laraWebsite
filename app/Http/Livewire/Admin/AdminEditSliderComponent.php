@@ -13,6 +13,7 @@ class AdminEditSliderComponent extends Component
     use WithFileUploads;
     public $title;
     public $image;
+    public $content;
     public $status = 0;
     public $newImage;
 
@@ -22,6 +23,7 @@ class AdminEditSliderComponent extends Component
         $this->slide_id = $slide_id;
         $this->title = $slide->title;
         $this->image = $slide->image;
+        $this->content = $slide->content;
         $this->status = $slide->status;
     }
 
@@ -47,7 +49,7 @@ class AdminEditSliderComponent extends Component
             $this->newImage->storeAs('slider', $imageName);
             $slide->image = $imageName;
         }
-
+        $slide->content = $this->content;
         $slide->status = $this->status;
         $slide->save();
         session()->flash('message', 'Slide has been updated successfully');
