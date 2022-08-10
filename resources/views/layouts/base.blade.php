@@ -10,6 +10,13 @@
 
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   @livewireStyles
+
+  <style>
+    .ui-menu-item{
+      cursor: pointer;
+  }
+  </style>
+
 </head>
 
 <body>
@@ -88,7 +95,6 @@
     </nav>
   </div>
   <!-- Main Hero Content -->
-    base.blade.php
 
     <div class="w-full">
       {{ $slot }}

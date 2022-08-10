@@ -15,7 +15,7 @@ class HomeComponent extends Component
         $categories = ServiceCategory::inRandomOrder()->take(10)->get();
         $slides = Slider::where('status', 1)->latest()->limit(1)->get();
         $bodies = Body::all();
-        $services = Service::all();
+        $services = Service::where('status', 1)->latest()->limit(4)->get();
         return view('livewire.home-component', [
             'categories' => $categories,
             'slides' => $slides,

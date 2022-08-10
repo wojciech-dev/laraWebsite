@@ -15,7 +15,7 @@ class MenuComponent extends Component
     {
         $categories = ServiceCategory::pluck('name');
         return view('livewire.menu-component', [
-            'services' => Service::orderBy($this->sortField, $this->sortAsc)->paginate(9),
+            'services' => Service::where('status', 1)->orderBy($this->sortField, $this->sortAsc)->paginate(9),
             'categories' => $categories
         ])->layout('layouts.base');
     }
