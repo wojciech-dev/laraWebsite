@@ -1,8 +1,6 @@
 <x-guest-layout>
 
-    <x-slot name="logo">
-        DentalPro
-    </x-slot>
+    <x-slot name="logo"></x-slot>
 
     <x-jet-validation-errors class="m-5 text-center text-red-600" />
 

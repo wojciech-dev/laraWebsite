@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\MenuComponent;
+use App\Http\Livewire\AboutComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\GalleryComponent;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\SearchController;
 use App\Http\Livewire\ServiceDetailsComponent;
@@ -27,7 +30,6 @@ use App\Http\Livewire\Provider\EditProviderProfileComponent;
 use App\Http\Livewire\Admin\AdminAddServiceCategoryComponent;
 use App\Http\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditServiceCategoryComponent;
-use App\Http\Livewire\MenuComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +58,8 @@ Route::get('/autocomplete', [SearchController::class, 'autocomplete'])->name('au
 Route::post('/search', [SearchController::class, 'searchServices'])->name('searchServices');
 Route::get('/contact-us', ContactComponent::class)->name('home.contact');
 Route::get('/our-menu', MenuComponent::class)->name('home.menu');
+Route::get('/about-us', AboutComponent::class)->name('home.about');
+Route::get('/gallery', GalleryComponent::class)->name('gallery.about');
 
 //Customer
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

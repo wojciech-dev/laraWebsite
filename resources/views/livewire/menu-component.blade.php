@@ -39,7 +39,7 @@
                             <div class="w-48 md:mb-0">
                                 <div class="relative">
 
-                                    <select wire:model="sortAsc" class="uppercase font-semibold text-gray-700 tracking-wide block appearance-none w-full bg-transparent text-gray-700 rounded leading-tight focus:outline-none">
+                                    <select wire:model="sortAsc" id="select" class="uppercase font-semibold text-gray-700 tracking-wide block appearance-none w-full bg-transparent text-gray-700 rounded leading-tight focus:outline-none">
                                         <option value="asc">price - low</option>
                                         <option value="desc">price - high</option>
                                   </select>
@@ -56,9 +56,9 @@
                     <!-- sort title end -->
 
                     <div class="menu-items-wrapper">
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap items">
                             @foreach ($services as $service)
-                            <div data-category="{{ $service->category->name }}" class="product w-full sm:w-1/2 xl:w-1/3">
+                            <div data-category="{{ $service->category->name }}" data-price="{{ $service->price }}" class="product w-full sm:w-1/2 xl:w-1/3">
                                 <div class="inner p-3">
                                     <div class="border mene-item rounded overflow-hidden">
                                         <div class="mi-image">

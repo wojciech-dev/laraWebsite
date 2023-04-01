@@ -78,11 +78,11 @@
           <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
           href="/">Home</a>
         <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-          href="#">About Us</a>
+          href="/about-us">About Us</a>
         <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
           href="/our-menu">Our Menu</a>
         <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
-          href="#">Gallery</a>
+          href="/gallery">Gallery</a>
           <div>
             <a class="inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
             href="{{ route('login') }}">Login</a>
